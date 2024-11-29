@@ -1,4 +1,5 @@
 ## kubeasz十分钟搭建集群
+**以下所有的操作都在root用户下进行**
 ### step0:永久关闭防火墙
 `sudo systemctl disable ufw`
 ### step1:SSH免密登陆
