@@ -16,7 +16,6 @@
 - 设置环境为`export release=3.6.5`，开始按照即可
 
 注意：k8s 1.3x版本之后其kube-proxy已经变成了进程，在之前是以pod运行在kube-system命名空间下。kube-proxy起到负载均衡和**服务发现**的作用
-
 此外，由于我们的节点经过了一层跳板机，如果在本地游览器访问的话，需要在vscode里面进行端口的转发
 
 ## 安装miniconda
