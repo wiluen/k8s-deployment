@@ -17,6 +17,11 @@
 
 注意：k8s 1.3x版本之后其kube-proxy已经变成了进程，在之前是以pod运行在kube-system命名空间下。kube-proxy起到负载均衡和**服务发现**的作用。此外，由于我们的节点经过了一层跳板机，如果在本地游览器访问的话，需要在vscode里面进行端口的转发
 
+## 安装监控系统
+主要安装的有：node-exporter（监控节点），cadvisor（监控容器），prometheus时序数据库和查询接口（实测不出问题）
+
+文件在monitor目录下，先创建monitor命名空间，按照一定的顺序安装即可，镜像全部换成了阿里云，在prometheus_configmap注意配置一些监控的端口，已换成静态
+
 ## 安装helm
 [https://helm.sh/docs/intro/install/]
 ## 安装miniconda
