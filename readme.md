@@ -23,8 +23,11 @@
 参考[https://blog.csdn.net/weixin_43651674/article/details/134880766]
 然后将conda配置进环境变量`export PATH="/root/miniconda3/bin:$PATH"`然后`source ~/.bashrc`
 ## docker镜像操作
-由于限制，无法从docker拉取镜像，上传到阿里云镜像仓库，主节点的镜像可以传递到其他的节点,但由于主节点是docker，而从节点是containerd
-主节点执行 `docker save -o <imagename>.tar <full_imagesname:version>`
-在从节点首先找到`find / -name ctr`然后软链接到可执行文件`ln /opt/kube/bin/containerd-bin/ctr /usr/bin/ctr`，然后执行`ctr -n k8s.io image import <imagename>.tar`
+由于限制，无法从docker拉取镜像，
+第一种方法是每个节点配置clash代理，直接拉docker hub
+第二种方法是手动拉下来并上传到阿里云镜像[https://cr.console.aliyun.com/cn-hangzhou/instance/dashboard]
+第三种方法是主节点的镜像可以传递到其他的节点,但由于主节点是docker，而从节点的容器运行时是containerd
+- 主节点执行 `docker save -o <imagename>.tar <full_imagesname:version>`
+- 在从节点首先找到`find / -name ctr`然后软链接到可执行文件`ln /opt/kube/bin/containerd-bin/ctr /usr/bin/ctr`，然后执行`ctr -n k8s.io image import <imagename>.tar`加载镜像
 
 
