@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+  namespace: monitor
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      name: prometheus
+      labels:
+        app: prometheus
+    spec:
+      serviceAccount: prometheus
+      nodeSelector:
+        kubernetes.io/hostname: k8s-10-10-2-64 
+      containers:
+      - name: prometheus
+        image: registry.cn-hangzhou.aliyuncs.com/sysu-faas/prometheus
+        args:
+        - '--storage.tsdb.retention=60h'
+        - '--config.file=/etc/prometheus/prometheus.yml'
+        ports:
+        - name: web
+          containerPort: 9090
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/prometheus
+        - name: alertrules-volume
+          mountPath: /etc/prometheus-rules
+      volumes:
+      - name: config-volume
+        configMap:
+          name: prometheus-configmap
+      - name: alertrules-volume
+        configMap:
+          name: prometheus-alertrules
+      nodeSelector:
+        beta.kubernetes.io/os: linux
