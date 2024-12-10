@@ -33,6 +33,7 @@
 2. 第二种方法是手动拉下来并上传到阿里云镜像[https://cr.console.aliyun.com/cn-hangzhou/instance/dashboard]
 3. 第三种方法是主节点的镜像可以传递到其他的节点,但由于主节点是docker，而从节点的容器运行时是containerd
 - 主节点执行 `docker save -o <imagename>.tar <full_imagesname:version>`
+- 传递镜像`scp path/to/<imagename>.tar user@ip:path`
 - 在从节点首先找到`find / -name ctr`然后软链接到可执行文件`ln /opt/kube/bin/containerd-bin/ctr /usr/bin/ctr`，然后执行`ctr -n k8s.io image import <imagename>.tar`加载镜像
 
 
