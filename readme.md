@@ -14,6 +14,7 @@
 做一些替换：
 - 由于docker的问题，不要下载原来的ezdown,手动下载替换为国内镜像的(ezdown)[https://github.com/bogeit/LearnK8s/blob/main/kubeasz-3.6.5/ezdown]
 - 设置环境为`export release=3.6.5`，开始按照即可
+- 网络使用flannel，默认calico的话没法跨节点访问服务
 
 注意：k8s 1.3x版本之后其kube-proxy已经变成了进程，在之前是以pod运行在kube-system命名空间下。kube-proxy起到负载均衡和**服务发现**的作用。此外，由于我们的节点经过了一层跳板机，如果在本地游览器访问的话，需要在vscode里面进行端口的转发
 
@@ -21,6 +22,17 @@
 主要安装的有：node-exporter（监控节点），cadvisor（监控容器），prometheus时序数据库和查询接口（实测不出问题）
 
 文件在monitor目录下，先创建monitor命名空间，按照一定的顺序安装即可，镜像全部换成了阿里云，在prometheus_configmap注意配置一些监控的端口，已换成静态
+
+## docker镜像配置
+- `sudo mkdir /etc/systemd/system/docker.service.d`
+- `echo -e "[Service]\nEnvironment=\"HTTP_PROXY=127.0.0.1:7890\"\nEnvironment=\"HTTPS_PROXY=127.0.0.1:7890\"" > /etc/systemd/system/docker.service.d/proxy.conf`
+- `sudo systemctl daemon-reload && systemctl restart docker`
+
+containerd参考[https://developer.baidu.com/article/details/2807572]
+
+## clash配置
+配置海外代理，可以访问到dockerhub
+首先上传clash文件到服务器，然后`sudo chmod 777 clash && sudo mv clash /usr/bin/`,然后执行`clash`,会在用户目录下生成`.config/clash/`，然后将自己购买的账号的Country.mmdb文件和config.yaml文件上传到这个目录下，执行clash就可以 
 
 ## 安装helm
 [https://helm.sh/docs/intro/install/]
