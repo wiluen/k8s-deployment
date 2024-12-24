@@ -1,5 +1,6 @@
 ## kubeasz十分钟裸机搭建k8s集群
 **以下所有的操作都在root用户下进行**
+`sudo passwd root`先建root
 ### step0:永久关闭防火墙
 `sudo systemctl disable ufw`
 ### step1:SSH免密登陆
