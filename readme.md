@@ -49,4 +49,7 @@ containerd参考[https://developer.baidu.com/article/details/2807572]
 - 传递镜像`scp path/to/<imagename>.tar user@ip:path`
 - 在从节点首先找到`find / -name ctr`然后软链接到可执行文件`ln /opt/kube/bin/containerd-bin/ctr /usr/bin/ctr`，然后执行`ctr -n k8s.io image import <imagename>.tar`加载镜像
 
+## 部署微服务online-boutique
+直接把[https://github.com/yuxiaoba/Hipster-Shop/blob/master/release/kubernetes-manifests.yaml]复制下来，然后将 frontend-external的service的type改成`NodePort`,直接部署即可
 
+vscode端口转发出来，就可以在游览器访问了(转发机器ip:端口，不加机器ip还是访问不到)
