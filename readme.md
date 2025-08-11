@@ -19,6 +19,7 @@
 
 注意：cloud ECS机器将/etc/kubeasz/clusters/k8s-01/hosts设置为私网ip(192.168.x)而不是公网ip
 
+遇错误清理集群并reboot[https://github.com/easzlab/kubeasz/blob/master/docs/setup/quickStart.md]
 k8s 1.3x版本之后其kube-proxy已经变成了进程，在之前是以pod运行在kube-system命名空间下。kube-proxy起到负载均衡和**服务发现**的作用。此外，由于我们的节点经过了一层跳板机，如果在本地游览器访问的话，需要在vscode里面进行端口的转发
 
 ## 安装监控系统
