@@ -15,7 +15,7 @@
 做一些替换：
 - 由于docker的问题，不要下载原来的ezdown,手动下载替换为国内镜像的(ezdown)[https://github.com/bogeit/LearnK8s/blob/main/kubeasz-3.6.5/ezdown]
 - 设置环境为`export release=3.6.5`，开始按照即可
-- 网络使用(flannel)[https://github.com/easzlab/kubeasz/blob/master/docs/setup/network-plugin/flannel.md] 默认calico的话没法跨节点访问服务
+- 网络使用`flannel`需下载[https://github.com/easzlab/kubeasz/blob/master/docs/setup/network-plugin/flannel.md] ,默认calico的话没法跨节点访问服务
 
 注意：cloud ECS机器将/etc/kubeasz/clusters/k8s-01/hosts设置为私网ip(192.168.x)而不是公网ip
 
