@@ -15,9 +15,11 @@
 做一些替换：
 - 由于docker的问题，不要下载原来的ezdown,手动下载替换为国内镜像的(ezdown)[https://github.com/bogeit/LearnK8s/blob/main/kubeasz-3.6.5/ezdown]
 - 设置环境为`export release=3.6.5`，开始按照即可
-- 网络使用flannel，默认calico的话没法跨节点访问服务
+- 网络使用(flannel)[https://github.com/easzlab/kubeasz/blob/master/docs/setup/network-plugin/flannel.md]默认calico的话没法跨节点访问服务
 
-注意：k8s 1.3x版本之后其kube-proxy已经变成了进程，在之前是以pod运行在kube-system命名空间下。kube-proxy起到负载均衡和**服务发现**的作用。此外，由于我们的节点经过了一层跳板机，如果在本地游览器访问的话，需要在vscode里面进行端口的转发
+注意：cloud ECS机器将/etc/kubeasz/clusters/k8s-01/hosts设置为私网ip(192.168.x)而不是公网ip
+
+k8s 1.3x版本之后其kube-proxy已经变成了进程，在之前是以pod运行在kube-system命名空间下。kube-proxy起到负载均衡和**服务发现**的作用。此外，由于我们的节点经过了一层跳板机，如果在本地游览器访问的话，需要在vscode里面进行端口的转发
 
 ## 安装监控系统
 主要安装的有：node-exporter（监控节点），cadvisor（监控容器），prometheus时序数据库和查询接口（实测不出问题）
