@@ -56,3 +56,7 @@ containerd参考[https://developer.baidu.com/article/details/2807572]
 直接把 [https://github.com/yuxiaoba/Hipster-Shop/blob/master/release/kubernetes-manifests.yaml] 复制下来，然后将 frontend-external的service的type改成`NodePort`,直接部署即可
 
 vscode端口转发出来，就可以在游览器访问了(转发机器ip:端口，不加机器ip还是访问不到)
+
+## chaosblade
+helm install chaosblade /root/chaosblade-operator-amd64-1.8.0.tgz --namespace chaosblade
+cli直接下载chaosblade-1.8.0-linux_amd64压缩包并解压就可以直接使用
