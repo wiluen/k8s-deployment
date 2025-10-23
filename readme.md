@@ -57,6 +57,9 @@ containerd参考[https://developer.baidu.com/article/details/2807572]
 
 vscode端口转发出来，就可以在游览器访问了(转发机器ip:端口，不加机器ip还是访问不到)
 
+## monitor
+cadvisor，node-exporter,prometheus 均可部署成功，注意prometheus中的几个job_name的静态ip配置
+
 ## chaosblade
 helm install chaosblade /root/chaosblade-operator-amd64-1.8.0.tgz --namespace chaosblade
 cli直接下载chaosblade-1.8.0-linux_amd64压缩包并解压就可以直接使用
