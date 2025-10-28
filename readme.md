@@ -63,3 +63,19 @@ cadvisor，node-exporter,prometheus 均可部署成功，注意prometheus中的�
 ## chaosblade
 helm install chaosblade /root/chaosblade-operator-amd64-1.8.0.tgz --namespace chaosblade
 cli直接下载chaosblade-1.8.0-linux_amd64压缩包并解压就可以直接使用
+
+## istio
+---
+https://istio.io/latest/docs/ambient/getting-started/
+
+kubectl apply -f /istio-1.27.3/samples/addons/prometheus.yaml
+# automatic collect node,container,istio-request
+
+# key step: enable istio in namespace
+for sisdecar mode:
+ - kubectl label namespace boutique istio-injection=enabled --overwrite
+https://istio.io/latest/docs/setup/getting-started/
+
+for ambient mode:
+ - kubectl label namespace boutique istio.io/dataplane-mode=ambient --overwrite
+https://istio.io/latest/docs/ambient/getting-started/secure-and-visualize/
