@@ -63,6 +63,8 @@ cadvisor，node-exporter,prometheus 均可部署成功，注意prometheus中的�
 ## chaosblade
 helm install chaosblade /root/chaosblade-operator-amd64-1.8.0.tgz --namespace chaosblade
 cli直接下载chaosblade-1.8.0-linux_amd64压缩包并解压就可以直接使用
+比较靠谱的故障注入实验在：（istio sidecar的情况下很难注入，总是注入到istio-proxy。下面的例子是正确的注入写法）
+https://chaosblade.io/en/docs/experiment-types/k8s/container/blade_create_k8s_container-cpu
 
 ## istio
 https://istio.io/latest/docs/ambient/getting-started/
