@@ -75,6 +75,8 @@ for sisdecar mode:
  - kubectl label namespace boutique istio-injection=enabled --overwrite
 https://istio.io/latest/docs/setup/getting-started/
 
+    kubectl label namespace default istio-injection=enabled
+   
 for ambient mode:
  - kubectl label namespace boutique istio.io/dataplane-mode=ambient --overwrite
 https://istio.io/latest/docs/ambient/getting-started/secure-and-visualize/
