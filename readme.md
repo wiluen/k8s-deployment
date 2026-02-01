@@ -75,6 +75,7 @@ automatic collect node,container,istio-request
 #### key step: enable istio in namespace
 for sisdecar mode:
  - kubectl label namespace boutique istio-injection=enabled --overwrite
+ - kubectl label namespace boutique istio-injection-
 https://istio.io/latest/docs/setup/getting-started/
 
    
